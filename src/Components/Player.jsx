@@ -10,7 +10,6 @@ export default function Player({ initialName, symbol }) {
         setIsEditing((editing) => !editing);
     }
     function handleChange(event) {
-        console.log(event);
         setPlayerName(() => event.target.value);
     }
     let editablePlayerName = <span className="player-name">{playerName}</span>;

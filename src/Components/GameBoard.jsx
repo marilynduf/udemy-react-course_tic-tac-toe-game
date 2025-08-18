@@ -13,14 +13,14 @@ export default function GameBoard() {
         if (!null) {
             setGameBoard((prevGameBoard) => {
                 const updatedGameBoard = [
-                    ...prevGameBoard.map((innerArray) => [...innerArray]),
+                    ...prevGameBoard.map((innerArray) => [...innerArray]), // copie profonde du tableau 2D
                 ];
                 updatedGameBoard[rowIndex][colIndex] = "X";
                 return updatedGameBoard;
             });
         }
     }
-    console.log(gameBoard);
+
     return (
         <ol id="game-board">
             {gameBoard.map((row, rowIndex) => (
