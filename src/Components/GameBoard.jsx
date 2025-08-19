@@ -6,8 +6,7 @@ const initialGameBoard = [
     [null, null, null],
 ];
 
-export default function GameBoard({ active, onSelectSquare }) {
-    console.log(active);
+export default function GameBoard({ activePlayerSymbol, onSelectSquare }) {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     function handleSelectSquare(rowIndex, colIndex) {
@@ -16,7 +15,7 @@ export default function GameBoard({ active, onSelectSquare }) {
                 const updatedGameBoard = [
                     ...prevGameBoard.map((innerArray) => [...innerArray]), // copie profonde du tableau 2D
                 ];
-                updatedGameBoard[rowIndex][colIndex] = active;
+                updatedGameBoard[rowIndex][colIndex] = activePlayerSymbol;
                 return updatedGameBoard;
             });
 
