@@ -6,18 +6,21 @@ const initialGameBoard = [
     [null, null, null],
 ];
 
-export default function GameBoard() {
+export default function GameBoard({ active, onSelectSquare }) {
+    console.log(active);
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
     function handleSelectSquare(rowIndex, colIndex) {
-        if (!null) {
+        if (!gameBoard[rowIndex][colIndex]) {
             setGameBoard((prevGameBoard) => {
                 const updatedGameBoard = [
                     ...prevGameBoard.map((innerArray) => [...innerArray]), // copie profonde du tableau 2D
                 ];
-                updatedGameBoard[rowIndex][colIndex] = "X";
+                updatedGameBoard[rowIndex][colIndex] = active;
                 return updatedGameBoard;
             });
+
+            onSelectSquare();
         }
     }
 
