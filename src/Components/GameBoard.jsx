@@ -9,6 +9,10 @@ const initialGameBoard = [
 export default function GameBoard({ activePlayerSymbol, onSelectSquare }) {
     const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
+    /** @function handleSelectSquare
+     * @description Update le nouveau gameBoard
+     * @returns {string[]} tableau 2D de chaînes contenant des 'X' ou des 'O'
+     */
     function handleSelectSquare(rowIndex, colIndex) {
         if (!gameBoard[rowIndex][colIndex]) {
             setGameBoard((prevGameBoard) => {
@@ -19,7 +23,7 @@ export default function GameBoard({ activePlayerSymbol, onSelectSquare }) {
                 return updatedGameBoard;
             });
 
-            onSelectSquare();
+            onSelectSquare(); // Switch active player (définition dans le composant App)
         }
     }
 

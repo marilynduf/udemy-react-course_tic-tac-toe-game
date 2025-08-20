@@ -5,6 +5,10 @@ function App() {
     console.log("APP componement rendered");
     const [activePlayer, setActivePlayer] = useState("X");
 
+    /** @function handleSelectSquare
+     * @description Switch active player
+     * @returns {string} 'X' or 'O'
+     */
     function handleSelectSquare() {
         setActivePlayer((currActivePlayer) =>
             currActivePlayer === "X" ? "O" : "X"
