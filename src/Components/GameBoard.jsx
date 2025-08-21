@@ -1,30 +1,17 @@
-import { useState } from "react";
-
 const initialGameBoard = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
 ];
 
-export default function GameBoard({ activePlayerSymbol, onSelectSquare }) {
-    const [gameBoard, setGameBoard] = useState(initialGameBoard);
+export default function GameBoard({ onSelectSquare, turns }) {
+    console.log("GAMEBOARD componement rendered");
 
-    /** @function handleSelectSquare
-     * @description Update le nouveau gameBoard
-     * @returns {string[]} tableau 2D de chaînes contenant des 'X' ou des 'O'
-     */
-    function handleSelectSquare(rowIndex, colIndex) {
-        if (!gameBoard[rowIndex][colIndex]) {
-            setGameBoard((prevGameBoard) => {
-                const updatedGameBoard = [
-                    ...prevGameBoard.map((innerArray) => [...innerArray]), // copie profonde du tableau 2D
-                ];
-                updatedGameBoard[rowIndex][colIndex] = activePlayerSymbol;
-                return updatedGameBoard;
-            });
-
-            onSelectSquare(); // Switch active player (définition dans le composant App)
-        }
+    let gameBoard = initialGameBoard;
+    for (const turn of turns) {
+        const { square, player } = turn;
+        const { row, col } = square;
+        gameBoard[row][col] = player;
     }
 
     return (
@@ -36,7 +23,7 @@ export default function GameBoard({ activePlayerSymbol, onSelectSquare }) {
                             <li key={colIndex}>
                                 <button
                                     onClick={() =>
-                                        handleSelectSquare(rowIndex, colIndex)
+                                        onSelectSquare(rowIndex, colIndex)
                                     }
                                 >
                                     {playerSymbol}
