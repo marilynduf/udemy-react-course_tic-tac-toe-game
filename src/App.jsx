@@ -12,10 +12,7 @@ function deriveActivePlayer(gameTurns) {
 }
 
 function App() {
-    console.log("APP componement rendered");
-
     const [gameTurns, setGameTurns] = useState([]);
-
     const activePlayer = deriveActivePlayer(gameTurns);
 
     /** @function handleSelectSquare

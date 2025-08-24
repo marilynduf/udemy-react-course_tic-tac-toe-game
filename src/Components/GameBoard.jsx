@@ -5,8 +5,6 @@ const initialGameBoard = [
 ];
 
 export default function GameBoard({ onSelectSquare, turns }) {
-    console.log("GAMEBOARD componement rendered");
-
     let gameBoard = initialGameBoard;
     for (const turn of turns) {
         const { square, player } = turn;
