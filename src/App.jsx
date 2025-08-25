@@ -20,6 +20,10 @@ function App() {
      * @returns {string} 'X' or 'O'
      */
     function handleSelectSquare(rowIndex, colIndex) {
+        /** @function setGameTurns
+         * @description Enregistre les index du carré cliqué ainsi que le joueur actif (celui qui clique sur le carré), puis change la valeur contenu dans le carré par le symbol du joueur actif
+         * @returns {array[objects]} tableau d'objets
+         */
         setGameTurns((prevTurns) => {
             const activePlayer = deriveActivePlayer(prevTurns);
             const updateTurns = [
