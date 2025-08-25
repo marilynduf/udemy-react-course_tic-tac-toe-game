@@ -15,6 +15,19 @@ function App() {
     const [gameTurns, setGameTurns] = useState([]);
     const activePlayer = deriveActivePlayer(gameTurns);
 
+    const initialGameBoard = [
+        [null, null, null],
+        [null, null, null],
+        [null, null, null],
+    ];
+
+    let gameBoard = initialGameBoard;
+    for (const turn of gameTurns) {
+        const { square, player } = turn;
+        const { row, col } = square;
+        gameBoard[row][col] = player;
+    }
+
     /** @function handleSelectSquare
      * @description Switch active player
      * @returns {string} 'X' or 'O'
@@ -54,7 +67,7 @@ function App() {
                 </ol>
                 <GameBoard
                     onSelectSquare={handleSelectSquare}
-                    turns={gameTurns}
+                    board={gameBoard}
                 />
                 <Log>LOG</Log>
             </div>
